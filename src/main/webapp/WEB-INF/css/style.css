@@ -1,0 +1,35 @@
+/*table.myCoolStyle {*/
+    /*border: 4px solid #F90000;*/
+    /*background-color: #D8D8D8;*/
+    /*width: 400px;*/
+    /*text-align: center;*/
+    /*border-collapse: collapse;*/
+/*}*/
+/*table.myCoolStyle td, table.myCoolStyle th {*/
+    /*border: 3px solid #000000;*/
+    /*padding: 3px 10px;*/
+/*}*/
+/*table.myCoolStyle tbody td {*/
+    /*font-size: 16px;*/
+    /*font-weight: bold;*/
+    /*color: #960000;*/
+/*}*/
+/*table.myCoolStyle tr:nth-child(even) {*/
+    /*background: #BEDCFF;*/
+/*}*/
+/*table.myCoolStyle td:nth-child(even) {*/
+    /*background: #ACFFFA;*/
+/*}*/
+/*table.myCoolStyle tfoot td {*/
+    /*font-size: 14px;*/
+/*}*/
+/*table.myCoolStyle tfoot .links {*/
+    /*text-align: right;*/
+/*}*/
+/*table.myCoolStyle tfoot .links a{*/
+    /*display: inline-block;*/
+    /*background: #FFFFFF;*/
+    /*color: #A43152;*/
+    /*padding: 2px 8px;*/
+    /*border-radius: 5px;*/
+/*}*/
