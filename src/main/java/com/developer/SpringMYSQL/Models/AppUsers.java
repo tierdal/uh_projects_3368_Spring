@@ -3,15 +3,15 @@ package com.developer.SpringMYSQL.Models;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "appusers")
+@Table(name = "homework3")
 public class AppUsers
 {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     public int id;
-    @Column(name = "firstname")
+    @Column(name = "name_first")
     public String firstName;
-    @Column(name = "lastname")
+    @Column(name = "name_last")
     public String lastName;
 
     public AppUsers()
