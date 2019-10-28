@@ -4,57 +4,51 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>SpringBoot</title>
+    <title>AnimalFarm</title>
     <style><%@include file="../css/style.css"%></style>
 </head>
 <body>
 
-<h2>Styled People Management</h2>
+<h2>Animal Management Console</h2>
+
+<hr/>
+<form method="post" action="/save">
+    <input type="hidden" name="id" value="">
+    Animal Name:<br>
+    <input type="text" name="animal_name">
+    <br>
+    Animal Type:<br>
+    <input type="text" name="animal_type" >
+    <br>
+    Animal Age:<br>
+    <input type="number" name="animal_age">
+    <br><br>
+    <input type="submit" value="Submit">
+</form>
+
+<hr/>
 
 <table class="myCoolStyle">
     <tr>
         <th>ID</th>
-        <th>First Name</th>
-        <th>Last Name</th>
+        <th>Animal Name</th>
+        <th>Animal Type</th>
+        <th>Animal Age</th>
         <th>Action</th>
     </tr>
     <c:forEach var = "item" items = "${list}">
     <tr>
 
         <td>${item.id}</td>
-        <td>${item.firstName}</td>
-        <td>${item.lastName}</td>
+        <td>${item.animal_name}</td>
+        <td>${item.animal_type}</td>
+        <td>${item.animal_age}</td>
         <td>
-            <a href="/view/${item.id}">View</a>
-            <a href="/edit/${item.id}">Edit</a>
             <a href="/delete/${item.id}"><img src="../../img/delete.jpg" alt="delete_image" ></a>
         </td>
     </tr>
     </c:forEach>
 </table>
-
-<hr/>
-<form method="post" action="/save">
-    <input type="hidden" name="id" value="">
-    First name:<br>
-    <input type="text" name="firstname">
-    <br>
-    Last name:<br>
-    <input type="text" name="lastname" >
-    <br><br>
-    <input type="submit" value="Submit">
-</form>
-
-<hr/> <hr/>
-<FORM ACTION="formAction.jsp" METHOD="POST">
-    <SELECT NAME="select1" SIZE="5" MULTIPLE>
-        <c:forEach var = "item" items = "${list}">
-            <OPTION>${item.firstName} ${item.lastName}</OPTION>
-        </c:forEach>
-    </SELECT>
-    <BR>
-    <%--<INPUT TYPE="SUBMIT" VALUE="Submit">--%>
-</FORM>
 
 </body>
 </html>

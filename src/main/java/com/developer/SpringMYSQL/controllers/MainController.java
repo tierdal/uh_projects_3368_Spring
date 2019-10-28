@@ -1,7 +1,7 @@
 package com.developer.SpringMYSQL.controllers;
 
-import com.developer.SpringMYSQL.Models.AppUsers;
-import com.developer.SpringMYSQL.Models.AppUsersRepo;
+import com.developer.SpringMYSQL.Models.AppAnimals;
+import com.developer.SpringMYSQL.Models.AppAnimalsRepo;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,7 +16,7 @@ import java.util.Optional;
 public class MainController {
 
     @Autowired
-    AppUsersRepo appRepo;
+    AppAnimalsRepo appRepo;
 
 
     @RequestMapping("/")
@@ -28,31 +28,23 @@ public class MainController {
     }
 
     @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public ModelAndView save(@RequestParam("id") String id, @RequestParam("firstname") String firstName, @RequestParam("lastname") String lastName){
+    public ModelAndView save(@RequestParam("id") String id, @RequestParam("animal_name") String animal_name, @RequestParam("animal_type") String animal_type, @RequestParam("animal_age") int animal_age){
         ModelAndView mv = new ModelAndView("redirect:/");
-        AppUsers personToSave ;
+        AppAnimals animalToSave;
         if(!id.isEmpty())
         {
-            Optional<AppUsers> users = appRepo.findById(Integer.parseInt(id));
-            personToSave = users.get();
+            Optional<AppAnimals> animals = appRepo.findById(Integer.parseInt(id));
+            animalToSave = animals.get();
         }
         else
         {
-            personToSave = new AppUsers();
+            animalToSave = new AppAnimals();
         }
-        personToSave.setfirstName(firstName);
-        personToSave.setlastName(lastName);
-        appRepo.save(personToSave);
+        animalToSave.setAnimalName(animal_name);
+        animalToSave.setAnimalType(animal_type);
+        animalToSave.setAnimalAge(animal_age);
+        appRepo.save(animalToSave);
         mv.addObject("list", appRepo.findAll());
-        return mv;
-    }
-
-    @RequestMapping( value = "/view/{id}", method = RequestMethod.GET)
-    public ModelAndView view(@PathVariable("id") int id){
-        ModelAndView mv = new ModelAndView("view");
-        Optional<AppUsers> person = appRepo.findById(id);
-        AppUsers personToMap = person.get();
-        mv.addObject("selectedItem", personToMap);
         return mv;
     }
 
@@ -60,15 +52,6 @@ public class MainController {
     public ModelAndView delete(@PathVariable("id") int id){
         ModelAndView mv = new ModelAndView("redirect:/");
         appRepo.deleteById(id);
-        return mv;
-    }
-
-    @RequestMapping( value = "/edit/{id}", method = RequestMethod.GET)
-    public ModelAndView edit(@PathVariable("id") int id){
-        ModelAndView mv = new ModelAndView("edit");
-        Optional<AppUsers> person = appRepo.findById(id);
-        AppUsers personToMap = person.get();
-        mv.addObject("selectedItem", personToMap);
         return mv;
     }
 
